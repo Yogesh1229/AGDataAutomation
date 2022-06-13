@@ -5,10 +5,8 @@ using Xunit;
 
 namespace AGDataAPI.Helpers.Method
 {
-    public class AddCommentsToResourceHelper
+    public class AddCommentsToResourceHelper : BaseHelper
     {
-        public static ApiResponse JsonResponse { get; set; }
-
         public AddCommentsToResourceHelper AddCommentsToResources(string inputTestData, int postId)
         {
             var url = RequestHelper.CreateRequest(RequestTypeEnum.AddCommentsToResource);

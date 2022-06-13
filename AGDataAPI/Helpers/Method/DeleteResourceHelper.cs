@@ -5,10 +5,8 @@ using Xunit;
 
 namespace AGDataAPI.Helpers.Method
 {
-    public class DeleteResourceHelper
+    public class DeleteResourceHelper : BaseHelper
     {
-        public static ApiResponse JsonResponse { get; set; }
-
         public DeleteResourceHelper DeleteResources(int postId)
         {
             var url = RequestHelper.CreateRequest(RequestTypeEnum.DeleteResources);

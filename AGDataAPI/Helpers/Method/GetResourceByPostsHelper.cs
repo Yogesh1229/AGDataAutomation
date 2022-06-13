@@ -1,14 +1,12 @@
 ﻿using AGDataAPI.Helpers.NonMethod;
 using AGDataAPI.Models.Enums;
-using Newtonsoft.Json.Linq;
 using System.Net;
 using Xunit;
 
 namespace AGDataAPI.Helpers.Method
 {
-    public class GetResourceByPostsHelper
+    public class GetResourceByPostsHelper : BaseHelper
     {
-        public static ApiResponse JsonResponse { get; set; }
         public GetResourceByPostsHelper GetResourceByPosts(int postId)
         {
             var url = RequestHelper.CreateRequest(RequestTypeEnum.GetResourceByPosts);

@@ -6,10 +6,8 @@ using Xunit;
 
 namespace AGDataAPI.Helpers.Method
 {
-    public class CreateResourceHelper
+    public class CreateResourceHelper : BaseHelper
     {
-        public static ApiResponse JsonResponse { get; set; }
-
         public CreateResourceHelper CreateResources(string inputTestData)
         {
             var url = RequestHelper.CreateRequest(RequestTypeEnum.CreateResources);

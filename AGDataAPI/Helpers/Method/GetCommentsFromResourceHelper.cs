@@ -5,9 +5,8 @@ using Xunit;
 
 namespace AGDataAPI.Helpers.Method
 {
-    public class GetCommentsFromResourceHelper
+    public class GetCommentsFromResourceHelper : BaseHelper
     {
-        public static ApiResponse JsonResponse { get; set; }
         public GetCommentsFromResourceHelper GetCommentsFromResource(int postId)
         {
             var url = RequestHelper.CreateRequest(RequestTypeEnum.GetCommentsFromResource);

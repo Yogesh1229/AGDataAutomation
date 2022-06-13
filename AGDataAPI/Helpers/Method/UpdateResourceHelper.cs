@@ -5,10 +5,8 @@ using Xunit;
 
 namespace AGDataAPI.Helpers.Method
 {
-    public class UpdateResourceHelper
+    public class UpdateResourceHelper : BaseHelper
     {
-        public static ApiResponse JsonResponse { get; set; }
-
         public UpdateResourceHelper UpdateResources(string inputTestData, int postId)
         {
             var url = RequestHelper.CreateRequest(RequestTypeEnum.UpdateResources);
