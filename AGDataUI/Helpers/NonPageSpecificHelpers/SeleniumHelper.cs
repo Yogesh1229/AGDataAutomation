@@ -1,6 +1,8 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using Xunit;
 
@@ -23,6 +25,21 @@ namespace AGDataUI.Helpers.NonPageSpecificHelpers
             }
         }
 
+        public static IReadOnlyCollection<IWebElement> findElements(IWebDriver driver, By locator, TimeSpan timeout, string fieldName)
+        {
+            IReadOnlyCollection<IWebElement> elements = null;
+            try
+            {
+                waitForElementPresent(driver, locator, timeout);
+                elements = driver.FindElements(locator);
+                return elements;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public static void waitForElementPresent(IWebDriver driver, By locator, TimeSpan timeout)
         {
             try
@@ -35,7 +52,7 @@ namespace AGDataUI.Helpers.NonPageSpecificHelpers
             }
         }
 
-        public static void navigateToUrl(IWebDriver driver, string url, string title)
+        public static void navigateToUrl(IWebDriver driver, string url)
         {
             try
             {
@@ -73,6 +90,12 @@ namespace AGDataUI.Helpers.NonPageSpecificHelpers
             {
                 throw;
             }
+        }
+
+        public static void doubleClick(IWebDriver driver, IWebElement element)
+        {
+            Actions actions = new Actions(driver);
+            actions.DoubleClick(element).Perform();
         }
 
         public static void highlightElement(IWebDriver driver, IWebElement element)

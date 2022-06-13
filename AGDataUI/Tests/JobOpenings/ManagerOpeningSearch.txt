@@ -1,0 +1,4 @@
+﻿Test Cases/Scenario:
+
+SuccessfulRequests
+	        AGData_UI_ManagerOpeningSearch_SuccessfulRequests_01_01_ClickOnSecondLinkContainsManagerFromAllAvailableJobs

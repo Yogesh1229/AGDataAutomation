@@ -1,4 +1,7 @@
-﻿using OpenQA.Selenium;
+﻿using AGDataUI.Helpers.NonPageSpecificHelpers;
+using AGDataUI.Helpers.PageSpecificHelpers;
+using OpenQA.Selenium;
+using System;
 
 namespace AGDataUI.Models.ObjectsRepository
 {
@@ -11,6 +14,19 @@ namespace AGDataUI.Models.ObjectsRepository
         public HomePage(IWebDriver driver)
         {
             this.driver = driver;
+        }
+
+        public HomePage ClickOnCompanyLink()
+        {
+            SeleniumHelper.click(driver, company, TimeSpan.FromSeconds(60), "Company");
+            return this;
+        }
+
+        public CareersPage ClickOnCareersLink()
+        {
+            ClickOnCompanyLink();
+            SeleniumHelper.click(driver, company, TimeSpan.FromSeconds(60), "Click");
+            return new CareersPage(driver);
         }
     }
 }
