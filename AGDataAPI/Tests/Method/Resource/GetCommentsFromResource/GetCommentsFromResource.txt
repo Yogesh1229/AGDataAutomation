@@ -1,0 +1,4 @@
+﻿Test Cases/Scenario:
+
+SuccessfulRequests
+	       AGData_API_GetCommentsFromResource_SuccessfulRequests_01_01_RequestToGetCommentFromResourceShouldResultInSuccess

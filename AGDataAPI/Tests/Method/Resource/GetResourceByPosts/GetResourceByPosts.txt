@@ -1,0 +1,6 @@
+﻿Test Cases/Scenario:
+
+SuccessfulRequests
+	       AGData_API_GetResourceByPosts_SuccessfulRequests_01_01_PostsIdWith1ShouldResultInSuccess
+		   AGData_API_GetResourceByPosts_SuccessfulRequests_01_02_PostsIdWith2ShouldResultInSuccess
+
