@@ -10,9 +10,9 @@ namespace AGDataUI.Models.ObjectsRepository
     public class JobOpeningsPage
     {
         private IWebDriver driver;
-        private By managerLink = By.XPath("//a[contains(text(), 'Manager')]");
-        private By frameId = By.Id("HBIFRAME");
-        private By applyBtn = By.XPath("//a[text()='Apply']");
+        private By _managerLink = By.XPath("//a[contains(text(), 'Manager')]");
+        private By _frameId = By.Id("HBIFRAME");
+        private By _applyBtn = By.XPath("//a[text()='Apply']");
 
         public JobOpeningsPage(IWebDriver driver)
         {
@@ -21,9 +21,9 @@ namespace AGDataUI.Models.ObjectsRepository
 
         public JobOpeningsPage ClickOnSecondManagerLink()
         {
-            SeleniumHelper.SwitchToFrame(driver, frameId);
+            SeleniumHelper.SwitchToFrame(driver, _frameId);
             IReadOnlyCollection<IWebElement> managersList = 
-                SeleniumHelper.FindElements(driver, managerLink, TimeSpan.FromSeconds(60), "All Managers List");
+                SeleniumHelper.FindElements(driver, _managerLink, TimeSpan.FromSeconds(60), "All Managers List");
 
             SeleniumHelper.ClickUsingJSExecutor(driver, managersList.ElementAt(1));
 
@@ -32,7 +32,7 @@ namespace AGDataUI.Models.ObjectsRepository
 
         public void VerifyIfApplyButtonIsDisplayed()
         {
-            bool isApplyBtnDisplayed = SeleniumHelper.IsElementDisplayed(driver, applyBtn, TimeSpan.FromSeconds(60), "Apply Button");
+            bool isApplyBtnDisplayed = SeleniumHelper.IsElementDisplayed(driver, _applyBtn, TimeSpan.FromSeconds(60), "Apply Button");
             Assert.True(isApplyBtnDisplayed, "Manager openings description page is not opened.");
         }
     }

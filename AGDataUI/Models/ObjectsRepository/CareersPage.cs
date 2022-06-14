@@ -7,7 +7,7 @@ namespace AGDataUI.Models.ObjectsRepository
     public class CareersPage
     {
         private IWebDriver driver;
-        private By viewOpenPositions = By.XPath("//a[text() = 'View Open Positions']");
+        private By _viewOpenPositions = By.XPath("//a[text() = 'View Open Positions']");
 
         public CareersPage(IWebDriver driver)
         {
@@ -16,7 +16,7 @@ namespace AGDataUI.Models.ObjectsRepository
 
         public JobOpeningsPage ClickOnViewOpenPositionsLink()
         {
-            SeleniumHelper.Click(driver, viewOpenPositions, TimeSpan.FromSeconds(60), "View Open Positions");
+            SeleniumHelper.Click(driver, _viewOpenPositions, TimeSpan.FromSeconds(60), "View Open Positions");
 
             return new JobOpeningsPage(driver);
         }
