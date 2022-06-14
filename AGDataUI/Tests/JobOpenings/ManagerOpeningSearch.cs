@@ -13,7 +13,7 @@ namespace AGDataUI.Tests.JobOpenings
         public ManagerOpeningSearch()
         {
             driver = BrowserHelper.InitializeDriver("Chrome");
-            SeleniumHelper.navigateToUrl(driver, "https://www.agdata.com/");
+            SeleniumHelper.NavigateToUrl(driver, "https://www.agdata.com/");
         }
 
         [Fact]
@@ -24,7 +24,8 @@ namespace AGDataUI.Tests.JobOpenings
             homePage
                 .ClickOnCareersLink()
                 .ClickOnViewOpenPositionsLink()
-                .ClickOnSecondManagerLink();
+                .ClickOnSecondManagerLink()
+                .VerifyIfApplyButtonIsDisplayed();
         }
     }
 }

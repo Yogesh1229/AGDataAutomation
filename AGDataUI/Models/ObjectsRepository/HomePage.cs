@@ -16,16 +16,16 @@ namespace AGDataUI.Models.ObjectsRepository
             this.driver = driver;
         }
 
-        public HomePage ClickOnCompanyLink()
+        public HomePage HoverCompanyLink()
         {
-            SeleniumHelper.click(driver, company, TimeSpan.FromSeconds(60), "Company");
+            SeleniumHelper.MoveToElement(driver, company, TimeSpan.FromSeconds(60), "Company");
             return this;
         }
 
         public CareersPage ClickOnCareersLink()
         {
-            ClickOnCompanyLink();
-            SeleniumHelper.click(driver, company, TimeSpan.FromSeconds(60), "Click");
+            HoverCompanyLink();
+            SeleniumHelper.MoveToElementAndClick(driver, careers, TimeSpan.FromSeconds(60), "Careers");
             return new CareersPage(driver);
         }
     }

@@ -3,6 +3,7 @@ using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Xunit;
 
 namespace AGDataUI.Models.ObjectsRepository
 {
@@ -11,6 +12,7 @@ namespace AGDataUI.Models.ObjectsRepository
         private IWebDriver driver;
         private By managerLink = By.XPath("//a[contains(text(), 'Manager')]");
         private By frameId = By.Id("HBIFRAME");
+        private By applyBtn = By.XPath("//a[text()='Apply']");
 
         public JobOpeningsPage(IWebDriver driver)
         {
@@ -19,12 +21,19 @@ namespace AGDataUI.Models.ObjectsRepository
 
         public JobOpeningsPage ClickOnSecondManagerLink()
         {
-            SeleniumHelper.switchToFrame(driver, frameId.ToString());
+            SeleniumHelper.SwitchToFrame(driver, frameId);
             IReadOnlyCollection<IWebElement> managersList = 
-                SeleniumHelper.findElements(driver, managerLink, TimeSpan.FromSeconds(60), "All Managers List");
+                SeleniumHelper.FindElements(driver, managerLink, TimeSpan.FromSeconds(60), "All Managers List");
 
-            SeleniumHelper.doubleClick(driver, managersList.ElementAt(2));
+            SeleniumHelper.ClickUsingJSExecutor(driver, managersList.ElementAt(1));
+
             return this;
+        }
+
+        public void VerifyIfApplyButtonIsDisplayed()
+        {
+            bool isApplyBtnDisplayed = SeleniumHelper.IsElementDisplayed(driver, applyBtn, TimeSpan.FromSeconds(60), "Apply Button");
+            Assert.True(isApplyBtnDisplayed, "Manager openings description page is not opened.");
         }
     }
 }

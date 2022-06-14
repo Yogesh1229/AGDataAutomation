@@ -4,18 +4,17 @@ using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Threading;
-using Xunit;
 
 namespace AGDataUI.Helpers.NonPageSpecificHelpers
 {
     public class SeleniumHelper
     {
-        public static IWebElement findElement(IWebDriver driver, By locator, TimeSpan timeout, string fieldName)
+        public static IWebElement FindElement(IWebDriver driver, By locator, TimeSpan timeout, string fieldName)
         {
             IWebElement element = null;
             try
             {
-                waitForElementPresent(driver, locator, timeout);
+                WaitForElementPresent(driver, locator, timeout);
                 element = driver.FindElement(locator);
                 return element;
             }
@@ -25,12 +24,12 @@ namespace AGDataUI.Helpers.NonPageSpecificHelpers
             }
         }
 
-        public static IReadOnlyCollection<IWebElement> findElements(IWebDriver driver, By locator, TimeSpan timeout, string fieldName)
+        public static IReadOnlyCollection<IWebElement> FindElements(IWebDriver driver, By locator, TimeSpan timeout, string fieldName)
         {
             IReadOnlyCollection<IWebElement> elements = null;
             try
             {
-                waitForElementPresent(driver, locator, timeout);
+                WaitForElementPresent(driver, locator, timeout);
                 elements = driver.FindElements(locator);
                 return elements;
             }
@@ -40,7 +39,7 @@ namespace AGDataUI.Helpers.NonPageSpecificHelpers
             }
         }
 
-        public static void waitForElementPresent(IWebDriver driver, By locator, TimeSpan timeout)
+        public static void WaitForElementPresent(IWebDriver driver, By locator, TimeSpan timeout)
         {
             try
             {
@@ -52,13 +51,13 @@ namespace AGDataUI.Helpers.NonPageSpecificHelpers
             }
         }
 
-        public static void navigateToUrl(IWebDriver driver, string url)
+        public static void NavigateToUrl(IWebDriver driver, string url)
         {
             try
             {
-                driver.Navigate().GoToUrl(url);
                 driver.Manage().Window.Maximize();
-                driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(100);
+                driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(40);
+                driver.Navigate().GoToUrl(url);               
             }
             catch (System.Exception)
             {
@@ -66,13 +65,14 @@ namespace AGDataUI.Helpers.NonPageSpecificHelpers
             }
         }
 
-        public static void click(IWebDriver driver, By locator, TimeSpan timeout, string fieldName)
+        public static void Click(IWebDriver driver, By locator, TimeSpan timeout, string fieldName)
         {
             try
             {
-                waitForElementPresent(driver, locator, timeout);
-                IWebElement element = findElement(driver, locator, timeout, fieldName);
-                highlightElement(driver, element);
+                WaitForElementPresent(driver, locator, timeout);
+                IWebElement element = FindElement(driver, locator, timeout, fieldName);
+                HighlightElement(driver, element);
+                element.Click();
             }
             catch (Exception)
             {
@@ -80,11 +80,42 @@ namespace AGDataUI.Helpers.NonPageSpecificHelpers
             }
         }
 
-        public static void switchToFrame(IWebDriver driver, string frameId)
+        public static void ClickUsingJSExecutor(IWebDriver driver, IWebElement element)
         {
             try
             {
-                driver.SwitchTo().Frame(driver.FindElement(By.Id(frameId)));
+                if(element.Displayed && element.Enabled)
+                {
+                    HighlightElement(driver, element);
+                    ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", element);
+                }  
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static bool IsElementDisplayed(IWebDriver driver, By locator, TimeSpan timeout, string fieldName)
+        {
+            bool isDisplayed = false;
+            try
+            {
+                IWebElement element = FindElement(driver, locator, timeout, fieldName);
+                isDisplayed = element.Displayed;
+                return isDisplayed;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static void SwitchToFrame(IWebDriver driver, By frameId)
+        {
+            try
+            {
+                driver.SwitchTo().Frame(driver.FindElement(frameId));
             }
             catch (System.Exception)
             {
@@ -92,13 +123,26 @@ namespace AGDataUI.Helpers.NonPageSpecificHelpers
             }
         }
 
-        public static void doubleClick(IWebDriver driver, IWebElement element)
+        public static void DoubleClick(IWebDriver driver, IWebElement element)
         {
             Actions actions = new Actions(driver);
             actions.DoubleClick(element).Perform();
         }
 
-        public static void highlightElement(IWebDriver driver, IWebElement element)
+        public static void MoveToElement(IWebDriver driver, By locator, TimeSpan timeout, string fieldName)
+        {
+            Actions actions = new Actions(driver);
+            actions.MoveToElement(FindElement(driver, locator, timeout, fieldName)).Perform();
+        }
+
+        public static void MoveToElementAndClick(IWebDriver driver, By locator, TimeSpan timeout, string fieldName)
+        {
+            Actions actions = new Actions(driver);
+            actions.MoveToElement(FindElement(driver, locator, timeout, fieldName)).Perform();
+            actions.Click().Build().Perform();
+        }
+
+        public static void HighlightElement(IWebDriver driver, IWebElement element)
         {
             IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
             js.ExecuteScript("arguments[0].setAttribute('style', 'border: 2px solid green;');", element);

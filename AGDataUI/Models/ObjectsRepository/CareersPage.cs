@@ -16,7 +16,7 @@ namespace AGDataUI.Models.ObjectsRepository
 
         public JobOpeningsPage ClickOnViewOpenPositionsLink()
         {
-            SeleniumHelper.click(driver, viewOpenPositions, TimeSpan.FromSeconds(60), "View Open Positions");
+            SeleniumHelper.Click(driver, viewOpenPositions, TimeSpan.FromSeconds(60), "View Open Positions");
 
             return new JobOpeningsPage(driver);
         }
