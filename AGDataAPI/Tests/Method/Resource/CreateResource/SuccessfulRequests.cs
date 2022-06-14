@@ -8,7 +8,7 @@ namespace AGDataAPI.Tests.Method.Resource.CreateAResource
         private CreateResourceHelper helper = new CreateResourceHelper();
 
         [Fact]
-        [Trait("Resource", "CreateResource")]
+        [Trait("API", "CreateResource")]
         public void AGData_API_CreateResource_SuccessfulRequests_01_01_ResourceCreationWithUserId1ResultInSuccess()
         {
             string inputTestData = "{\"title\": \"foo\", \"body\": \"bar\", \"userId\": 55}";

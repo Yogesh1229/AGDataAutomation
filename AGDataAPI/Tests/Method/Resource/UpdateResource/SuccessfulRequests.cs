@@ -8,7 +8,7 @@ namespace AGDataAPI.Tests.Method.Resource.UpdateResource
         private UpdateResourceHelper helper = new UpdateResourceHelper();
 
         [Fact]
-        [Trait("Resource", "UpdateResource")]
+        [Trait("API", "UpdateResource")]
         public void AGData_API_UpdateResource_SuccessfulRequests_01_01_UpdateResourceWithAllParametersResultInSuccess()
         {
             string inputTestData = "{\"id\": 20, \"title\": \"Automation Engineer\", \"body\": \"this is an update request\", \"userId\": 50}";

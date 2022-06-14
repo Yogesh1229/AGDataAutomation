@@ -8,7 +8,7 @@ namespace AGDataAPI.Tests.Method.Resource.DeleteResource
         private DeleteResourceHelper helper = new DeleteResourceHelper();
 
         [Fact]
-        [Trait("Resource", "DeleteResource")]
+        [Trait("API", "DeleteResource")]
         public void AGData_API_DeleteResource_SuccessfulRequests_01_01_PostsIdWith1ShouldResultInSuccess()
         {
             helper

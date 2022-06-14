@@ -8,7 +8,7 @@ namespace AGDataAPI.Tests.Method.Resource.AddCommentsToResource
         private AddCommentsToResourceHelper helper = new AddCommentsToResourceHelper();
 
         [Fact]
-        [Trait("Resource", "AddCommentsToResource")]
+        [Trait("API", "AddCommentsToResource")]
         public void AGData_API_AddCommentsToResource_SuccessfulRequests_01_01_RequestForAddingCommentsToResourceShouldResultInSuccess()
         {
             string inputTestData = "{\"postId\": 20, \"id\": 20, \"name\": \"Automation Engineer\", \"email\": \"test@test.com\", \"body\": \"this is a request\"}";

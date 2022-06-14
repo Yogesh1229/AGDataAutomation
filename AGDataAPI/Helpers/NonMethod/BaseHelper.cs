@@ -1,7 +1,9 @@
-﻿namespace AGDataAPI.Helpers.NonMethod
+﻿using System.Threading;
+
+namespace AGDataAPI.Helpers.NonMethod
 {
     public abstract class BaseHelper
     {
-        public static ApiResponse JsonResponse { get; set; }
+        public ApiResponse JsonResponse { get; set; }
     }
 }
