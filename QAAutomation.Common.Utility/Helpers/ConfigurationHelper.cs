@@ -1,8 +1,8 @@
-﻿using System;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
+using System;
 using System.IO;
 
-namespace AGDataAPI.Helpers.NonMethod
+namespace QAAutomation.Common.Utility.Helpers
 {
     public static class ConfigurationHelper
     {

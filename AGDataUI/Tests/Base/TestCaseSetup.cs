@@ -1,5 +1,6 @@
 ﻿using AGDataUI.Helpers.NonPageSpecificHelpers;
 using OpenQA.Selenium;
+using QAAutomation.Common.Utility.Helpers;
 using System;
 
 namespace AGDataUI.Tests.Base
@@ -10,8 +11,10 @@ namespace AGDataUI.Tests.Base
 
         public TestCaseSetup()
         {
-            driver = BrowserHelper.InitializeDriver("Chrome");
-            SeleniumHelper.NavigateToUrl(driver, "https://www.agdata.com/");
+            string browserType = ConfigurationHelper.getConfigValue("AppSettings", "Browser");
+            string url = ConfigurationHelper.getConfigValue("AppSettings", "Url");
+            driver = BrowserHelper.InitializeDriver(browserType);
+            SeleniumHelper.NavigateToUrl(driver, url);
         }
 
         public void Dispose()

@@ -1,8 +1,5 @@
-﻿using AGDataUI.Helpers.NonPageSpecificHelpers;
-using AGDataUI.Helpers.PageSpecificHelpers;
-using AGDataUI.Models.ObjectsRepository;
+﻿using AGDataUI.Models.ObjectsRepository;
 using AGDataUI.Tests.Base;
-using OpenQA.Selenium;
 using Xunit;
 
 namespace AGDataUI.Tests.JobOpenings
