@@ -11,20 +11,20 @@ namespace AGDataUI.Helpers.NonPageSpecificHelpers
 
         public static IWebDriver InitializeDriver(string browser)
         {
-            if (browser.Equals("Chrome"))
+            switch (browser)
             {
-                new WebDriverManager.DriverManager().SetUpDriver(new ChromeConfig());
-                driver = new ChromeDriver();               
-            }
-            else if (browser.Equals("Edge"))
-            {
-                new WebDriverManager.DriverManager().SetUpDriver(new EdgeConfig());
-                driver = new EdgeDriver();
-            }
-            else
-            {
-                new WebDriverManager.DriverManager().SetUpDriver(new ChromeConfig());
-                driver = new ChromeDriver();
+                case "Chrome":
+                    new WebDriverManager.DriverManager().SetUpDriver(new ChromeConfig());
+                    driver = new ChromeDriver();
+                    break;
+                case "Edge":
+                    new WebDriverManager.DriverManager().SetUpDriver(new EdgeConfig());
+                    driver = new EdgeDriver();
+                    break;
+                default:
+                    new WebDriverManager.DriverManager().SetUpDriver(new ChromeConfig());
+                    driver = new ChromeDriver();
+                    break;
             }
 
             return driver;
