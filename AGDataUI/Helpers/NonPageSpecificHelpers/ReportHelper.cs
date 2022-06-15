@@ -1,7 +1,6 @@
 ﻿using AventStack.ExtentReports;
 using AventStack.ExtentReports.Reporter;
 using System;
-using System.Globalization;
 using System.IO;
 
 namespace AGDataUI.Helpers.NonPageSpecificHelpers
@@ -20,8 +19,6 @@ namespace AGDataUI.Helpers.NonPageSpecificHelpers
         {
             if (extent == null)
             {
-                DateTime date = new DateTime();
-                string actualDate = date.ToString("yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
                 string reportPath = @"C:\TestReports\index.html";
                 htmlReporter = new ExtentHtmlReporter(reportPath);
                 extent = new ExtentReports();
