@@ -5,15 +5,17 @@ using Xunit;
 
 namespace AGDataUI.Tests.JobOpenings
 {
-    public class ManagerOpeningSearch : TestCaseSetup
+    public class Validations : TestCaseSetup
     {
         ExtentTest test;
 
+        //This test case is failed intentionally just to verify the reporting logs
+
         [Fact]
-        [Trait("UI", "ManagerOpeningSearch")]
-        public void AGData_UI_ManagerOpeningSearch_SuccessfulRequests_01_01_ClickOnSecondLinkContainsManagerFromAllAvailableJobs()
+        [Trait("UI", "Validations")]
+        public void AGData_UI_ManagerOpeningSearch_Validations_02_01_NegativeTestingToVerifyTheReportLogs()
         {
-            test = extentReports.CreateTest("ManagerOpeningSearch");
+            test = extentReports.CreateTest("Validations");
             test.Log(Status.Info, "Starting the test");
 
             HomePage homePage = new HomePage(driver);
@@ -21,9 +23,7 @@ namespace AGDataUI.Tests.JobOpenings
                 .ClickOnCareersLink(test)
                 .ClickOnViewOpenPositionsLink(test)
                 .ClickOnSecondManagerLink(test)
-                .VerifyIfApplyButtonIsDisplayed(test);
-
-            test.Log(Status.Pass, "Test Case Passed");
+                .VerifyIfApplyButtonIsDisplayed_Validations(test);
         }
     }
 }

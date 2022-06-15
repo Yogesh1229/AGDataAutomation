@@ -1,7 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
-using System.Threading;
 using WebDriverManager.DriverConfigs.Impl;
 
 namespace AGDataUI.Helpers.NonPageSpecificHelpers

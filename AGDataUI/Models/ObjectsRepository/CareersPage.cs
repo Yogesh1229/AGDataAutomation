@@ -1,4 +1,5 @@
 ﻿using AGDataUI.Helpers.NonPageSpecificHelpers;
+using AventStack.ExtentReports;
 using OpenQA.Selenium;
 using System;
 
@@ -14,10 +15,11 @@ namespace AGDataUI.Models.ObjectsRepository
             this.driver = driver;
         }
 
-        public JobOpeningsPage ClickOnViewOpenPositionsLink()
+        public JobOpeningsPage ClickOnViewOpenPositionsLink(ExtentTest test)
         {
-            SeleniumHelper.Click(driver, _viewOpenPositions, TimeSpan.FromSeconds(60), "View Open Positions");
+            SeleniumHelper.Click(driver, _viewOpenPositions, TimeSpan.FromSeconds(60), test, "View Open Positions", "Careers Page");
 
+            test.Log(Status.Pass, "Clicked on view open positions link successfully");
             return new JobOpeningsPage(driver);
         }
     }

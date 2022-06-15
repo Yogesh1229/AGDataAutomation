@@ -1,5 +1,5 @@
 ﻿using AGDataUI.Helpers.NonPageSpecificHelpers;
-using AGDataUI.Helpers.PageSpecificHelpers;
+using AventStack.ExtentReports;
 using OpenQA.Selenium;
 using System;
 
@@ -16,16 +16,18 @@ namespace AGDataUI.Models.ObjectsRepository
             this.driver = driver;
         }
 
-        public HomePage HoverCompanyLink()
+        public HomePage HoverCompanyLink(ExtentTest test)
         {
-            SeleniumHelper.MoveToElement(driver, _company, TimeSpan.FromSeconds(60), "Company");
+            SeleniumHelper.MoveToElement(driver, _company, TimeSpan.FromSeconds(60), test, "Company", "Home Page");
             return this;
         }
 
-        public CareersPage ClickOnCareersLink()
+        public CareersPage ClickOnCareersLink(ExtentTest test)
         {
-            HoverCompanyLink();
-            SeleniumHelper.MoveToElementAndClick(driver, _careers, TimeSpan.FromSeconds(60), "Careers");
+            HoverCompanyLink(test);
+            SeleniumHelper.MoveToElementAndClick(driver, _careers, TimeSpan.FromSeconds(60), test, "Careers", "Home Page");
+
+            test.Log(Status.Pass, "Clicked on careers link successfully");
             return new CareersPage(driver);
         }
     }

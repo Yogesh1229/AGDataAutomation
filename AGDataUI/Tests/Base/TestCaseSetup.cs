@@ -1,4 +1,5 @@
 ﻿using AGDataUI.Helpers.NonPageSpecificHelpers;
+using AventStack.ExtentReports;
 using OpenQA.Selenium;
 using QAAutomation.Common.Utility.Helpers;
 using System;
@@ -7,6 +8,7 @@ namespace AGDataUI.Tests.Base
 {
     public abstract class TestCaseSetup : IDisposable
     {
+        protected ExtentReports extentReports = ReportHelper.GetInstance();
         protected IWebDriver driver;
 
         public TestCaseSetup()
@@ -23,6 +25,8 @@ namespace AGDataUI.Tests.Base
             {
                 driver.Quit();
             }
+
+            extentReports.Flush();
         }
     }
 }
