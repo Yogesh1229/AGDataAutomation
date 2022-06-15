@@ -18,11 +18,11 @@ namespace AGDataUI.Helpers.NonPageSpecificHelpers
 
         public static ExtentReports GetInstance()
         {
-            if(extent == null)
+            if (extent == null)
             {
                 DateTime date = new DateTime();
                 string actualDate = date.ToString("yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
-                string reportPath = @"C:\TestReports\AutomationReports.html";
+                string reportPath = @"C:\TestReports\index.html";
                 htmlReporter = new ExtentHtmlReporter(reportPath);
                 extent = new ExtentReports();
                 extent.AttachReporter(htmlReporter);
@@ -33,7 +33,7 @@ namespace AGDataUI.Helpers.NonPageSpecificHelpers
                 string extentConfigPath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + @"\extent-config.xml";
                 htmlReporter.LoadConfig(extentConfigPath);
             }
-      
+
             return extent;
         }
     }

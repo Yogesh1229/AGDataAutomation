@@ -35,14 +35,14 @@ namespace AGDataUI.Models.ObjectsRepository
 
         public void VerifyIfApplyButtonIsDisplayed(ExtentTest test)
         {
-            bool isApplyBtnDisplayed = SeleniumHelper.IsElementDisplayed(driver, _applyBtn, TimeSpan.FromSeconds(60), test, "Apply Button", "Jobs Opening Page");
+            bool isApplyBtnDisplayed = SeleniumHelper.IsElementDisplayed(driver, _applyBtn, TimeSpan.FromSeconds(30), test, "Apply Button", "Jobs Opening Page");
             test.Log(Status.Pass, "Job description page opened successfully");
             Assert.True(isApplyBtnDisplayed, "Manager openings description page is not opened.");
         }
 
         public void VerifyIfApplyButtonIsDisplayed_Validations(ExtentTest test)
         {
-            bool isApplyBtnDisplayed = SeleniumHelper.IsElementDisplayed(driver, _applyBtnValidation, TimeSpan.FromSeconds(60), test, "Apply Button", "Jobs Opening Page");
+            bool isApplyBtnDisplayed = SeleniumHelper.IsElementDisplayed(driver, _applyBtnValidation, TimeSpan.FromSeconds(30), test, "Apply Button", "Jobs Opening Page");
             test.Log(Status.Pass, "Job description page opened successfully");
             Assert.True(isApplyBtnDisplayed, "Manager openings description page is not opened.");
         }

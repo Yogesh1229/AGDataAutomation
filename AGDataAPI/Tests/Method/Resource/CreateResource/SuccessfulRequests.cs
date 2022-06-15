@@ -13,10 +13,10 @@ namespace AGDataAPI.Tests.Method.Resource.CreateAResource
         {
             string inputTestData = "{\"title\": \"foo\", \"body\": \"bar\", \"userId\": 55}";
             string expectedData = "{\n  \"title\": \"foo\",\n  \"body\": \"bar\",\n  \"userId\": 55,\n  \"id\": 101\n}";
+
             helper
                 .CreateResources(inputTestData)
                 .VerifySuccess(expectedData);
         }
-
     }
 }
