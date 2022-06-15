@@ -7,7 +7,7 @@ namespace AGDataUI.Models.ObjectsRepository
     public class CareersPage
     {
         private IWebDriver driver;
-        private By _viewOpenPositions = By.XPath("//a[text() = 'View Open Positions']");
+        private readonly By _viewOpenPositions = By.XPath("//a[text() = 'View Open Positions']");
 
         public CareersPage(IWebDriver driver)
         {

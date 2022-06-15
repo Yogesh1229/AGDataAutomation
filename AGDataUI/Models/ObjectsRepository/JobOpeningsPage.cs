@@ -10,9 +10,9 @@ namespace AGDataUI.Models.ObjectsRepository
     public class JobOpeningsPage
     {
         private IWebDriver driver;
-        private By _managerLink = By.XPath("//a[contains(text(), 'Manager')]");
-        private By _frameId = By.Id("HBIFRAME");
-        private By _applyBtn = By.XPath("//a[text()='Apply']");
+        private readonly By _managerLink = By.XPath("//a[contains(text(), 'Manager')]");
+        private readonly By _frameId = By.Id("HBIFRAME");
+        private readonly By _applyBtn = By.XPath("//a[text()='Apply']");
 
         public JobOpeningsPage(IWebDriver driver)
         {

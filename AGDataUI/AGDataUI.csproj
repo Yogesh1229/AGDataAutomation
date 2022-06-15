@@ -26,6 +26,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\QAAutomation.Common.Utility\QAAutomation.Common.Utility.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="QAAutomation.Common.Utility">
       <HintPath>..\QAAutomation.Common.Utility\bin\Debug\netcoreapp3.1\QAAutomation.Common.Utility.dll</HintPath>
     </Reference>
